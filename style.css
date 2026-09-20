@@ -1,0 +1,347 @@
+/* ============================================
+   Age Calculator — Styles
+   Palette:
+   - Background gradient: deep indigo -> plum
+   - Card: warm ivory
+   - Accent: amber/gold (candle-like warmth)
+   - Text: charcoal / muted plum
+   ============================================ */
+
+:root {
+  --color-bg-start: #1c1132;
+  --color-bg-end: #3d1f5c;
+  --color-card: #fbf8f2;
+  --color-charcoal: #2a2338;
+  --color-muted: #756a8a;
+  --color-accent: #e2a640;
+  --color-accent-dark: #c8871f;
+  --color-accent-soft: #f6e3c2;
+  --color-error: #b5473b;
+  --color-error-bg: #fbeae7;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 9px;
+  --shadow-card: 0 30px 60px -20px rgba(28, 17, 50, 0.55);
+  --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background: radial-gradient(circle at 15% 10%, #4a2a6e 0%, transparent 45%),
+              radial-gradient(circle at 85% 90%, #522a5c 0%, transparent 50%),
+              linear-gradient(160deg, var(--color-bg-start), var(--color-bg-end));
+  background-attachment: fixed;
+}
+
+/* ============================
+   Card
+   ============================ */
+
+.calculator-card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 40px 34px 34px;
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-accent-soft) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ============================
+   Header
+   ============================ */
+
+.card-header {
+  text-align: left;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-accent-dark);
+  font-weight: 600;
+}
+
+.card-header h1 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  line-height: 1.15;
+  color: var(--color-charcoal);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  max-width: 34ch;
+}
+
+/* ============================
+   Form / Inputs
+   ============================ */
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+
+.field-group input[type="date"] {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 13px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid #e2dccf;
+  background: #ffffff;
+  color: var(--color-charcoal);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field-group input[type="date"]:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(226, 166, 64, 0.2);
+}
+
+.error-message {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-error);
+  background: var(--color-error-bg);
+  border-radius: var(--radius-sm);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+
+.error-message.visible {
+  padding: 10px 12px;
+  max-height: 60px;
+  opacity: 1;
+}
+
+/* ============================
+   Buttons
+   ============================ */
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.btn {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 13px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  color: #ffffff;
+  box-shadow: 0 10px 20px -8px rgba(200, 135, 31, 0.6);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 14px 26px -8px rgba(200, 135, 31, 0.75);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #efeae0;
+  color: var(--color-charcoal);
+}
+
+.btn-secondary:hover {
+  background: #e5ddcd;
+  transform: translateY(-1px);
+}
+
+/* ============================
+   Result Section
+   ============================ */
+
+.result-section {
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid #e9e3d6;
+  display: none;
+  animation: fadeSlideIn 0.5s ease;
+}
+
+.result-section.visible {
+  display: block;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-label {
+  margin: 0 0 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+.age-breakdown {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.age-unit {
+  flex: 1;
+  background: linear-gradient(160deg, #ffffff, #faf5e9);
+  border: 1px solid #eee6d4;
+  border-radius: var(--radius-md);
+  padding: 16px 8px;
+  text-align: center;
+}
+
+.age-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-charcoal);
+  line-height: 1;
+}
+
+.age-word {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.stat-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.stat-box {
+  flex: 1;
+  background: var(--color-charcoal);
+  border-radius: var(--radius-md);
+  padding: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: #cfc6e0;
+}
+
+.stat-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.next-birthday-date {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.next-birthday-date strong {
+  color: var(--color-charcoal);
+}
+
+/* ============================
+   Responsive adjustments
+   ============================ */
+
+@media (max-width: 480px) {
+  .calculator-card {
+    padding: 30px 22px 26px;
+  }
+
+  .card-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .age-number {
+    font-size: 1.6rem;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 700px) {
+  .calculator-card {
+    max-width: 500px;
+    padding: 48px 44px 40px;
+  }
+}

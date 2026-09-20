@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Age Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="calculator-card">
+
+    <header class="card-header">
+      <p class="eyebrow">Find out exactly</p>
+      <h1>Age Calculator</h1>
+      <p class="subtitle">Enter your date of birth to see your age broken down to the day.</p>
+    </header>
+
+    <!-- Input section -->
+    <form id="ageForm" class="input-section" novalidate>
+      <div class="field-group">
+        <label for="birthDate">Date of birth</label>
+        <input type="date" id="birthDate" name="birthDate" required />
+      </div>
+
+      <!-- Error message shown for invalid or future dates -->
+      <p id="errorMessage" class="error-message" role="alert" aria-live="polite"></p>
+
+      <div class="button-row">
+        <button type="submit" id="calculateBtn" class="btn btn-primary">Calculate Age</button>
+        <button type="button" id="resetBtn" class="btn btn-secondary">Reset</button>
+      </div>
+    </form>
+
+    <!-- Result section, hidden until a valid calculation happens -->
+    <section id="resultSection" class="result-section" aria-live="polite">
+      <p class="result-label">Your Age</p>
+
+      <div class="age-breakdown">
+        <div class="age-unit">
+          <span id="yearsValue" class="age-number">0</span>
+          <span class="age-word">Years</span>
+        </div>
+        <div class="age-unit">
+          <span id="monthsValue" class="age-number">0</span>
+          <span class="age-word">Months</span>
+        </div>
+        <div class="age-unit">
+          <span id="daysValue" class="age-number">0</span>
+          <span class="age-word">Days</span>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-box">
+          <span class="stat-label">Total days lived</span>
+          <span id="totalDaysValue" class="stat-value">0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Next birthday in</span>
+          <span id="nextBirthdayCountdown" class="stat-value">0 days</span>
+        </div>
+      </div>
+
+      <p class="next-birthday-date">
+        Your next birthday falls on <strong id="nextBirthdayDate">—</strong>
+      </p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
